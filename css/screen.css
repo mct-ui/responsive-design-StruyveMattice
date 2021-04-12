@@ -178,6 +178,17 @@ a:focus {
 \*------------------------------------*/
 
 /*
+    Objects: List
+    ---
+    Small reusable object to remove default list styling from lists
+*/
+
+.o-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+/*
     Objects: Row
     ---
     Creates a horizontal row that stretches the viewport and adds padding around children
@@ -341,6 +352,65 @@ a:focus {
   #COMPONENTS
 \*------------------------------------*/
 
+/*
+    Component: header
+    ---
+    Main header of the website
+*/
+
+.c-header__nav {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .c-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .c-header__nav {
+    display: block;
+  }
+}
+
+/*
+    Component: Nav
+    ---
+    Main navigation of the site
+*/
+
+.c-nav {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.c-nav__link {
+  text-decoration: none;
+  font-weight: 400;
+  padding: 8px 0;
+  display: block;
+}
+
+.c-nav__link,
+.c-nav__link:visited,
+.c-nav__link:active {
+  color: #202024;
+}
+
+.is-selected .c-nav__link,
+.c-nav__link:hover,
+.c-nav__link:focus {
+  color: #5051db;
+}
+
+.c-nav__link--meta,
+.c-nav__link--meta:visited,
+.c-nav__link--meta:active {
+  color: #6c6c75;
+}
 /*
     Component: Logo
     ---
@@ -616,6 +686,21 @@ a:focus {
 @media (min-width: 768px) {}
 */
 
+@media (min-width: 768px) {
+  html {
+    font-size: 20px;
+    line-height: 1.6;
+  }
+  .c-logo {
+    height: 40px;
+  }
+
+  .c-nav__list {
+    display: flex;
+    gap: 32px;
+  }
+}
+
 /* Large devices (landscape tablets, desktops, 992px and up)
 @media (min-width: 992px) {}
 */
@@ -688,15 +773,5 @@ a:focus {
   h2,
   h3 {
     page-break-after: avoid;
-  }
-
-  @media (min-width: 768px) {
-    html {
-      font-size: 20px;
-      line-height: 1.6;
-    }
-    .c-logo {
-      height: 40px;
-    }
   }
 }
