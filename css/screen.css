@@ -5,23 +5,24 @@
 @font-face {
   font-family: "HK Grotesk Web";
   font-weight: 200;
-  src: url("../fonts/hkgrotesk-light-webfont.woff2") format("woff2"),
-    url("../fonts/hkgrotesk-light-webfont.woff") format("woff");
+  src: url("../fonts/hkgrotesk-light-webfont.woff") format("woff"),
+    url("../fonts/hkgrotesk-light-webfont.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "HK Grotesk Web";
   font-weight: 400;
-  src: url("../fonts/hkgrotesk-regular-webfont.woff2") format("woff2"),
-    url("../fonts/hkgrotesk-regular-webfont.woff") format("woff");
+  src: url("../fonts/hkgrotesk-regular-webfont.woff") format("woff"),
+    url("../fonts/hkgrotesk-regular-webfont.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "HK Grotesk Web";
   font-weight: 600;
-  src: url("../fonts/hkgrotesk-medium-webfont.woff2") format("woff2"),
-    url("../fonts/hkgrotesk-medium-webfont.woff") format("woff");
+  src: url("../fonts/hkgrotesk-medium-webfont.woff") format("woff"),
+    url("../fonts/hkgrotesk-medium-webfont.woff2") format("woff2");
 }
+
 /*------------------------------------*\
   #GENERIC
 \*------------------------------------*/
@@ -35,7 +36,7 @@
 html {
   font-size: 16px;
   line-height: 1.5;
-  font-family: "HK Grotesk Web", Helvetica, arial, sans-serif;
+  font-family: "HK Grotesk Web", sans-serif;
   color: #202024;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
@@ -46,6 +47,13 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 20px;
+    line-height: 1.6;
+  }
 }
 
 /*
@@ -82,25 +90,28 @@ img {
     Default markup for typographic elements
 */
 
+h1,
+h2,
+h3 {
+  font-weight: 200;
+}
+
 h1 {
   font-size: 36px;
   line-height: 48px;
   margin: 0 0 24px;
-  font-weight: 200;
 }
 
 h2 {
   font-size: 32px;
   line-height: 40px;
   margin: 0 0 24px;
-  font-weight: 200;
 }
 
 h3 {
   font-size: 26px;
   line-height: 32px;
   margin: 0 0 24px;
-  font-weight: 200;
 }
 
 h4,
@@ -165,7 +176,7 @@ a {
 
 a:visited,
 a:active {
-  color: #3e3ea8;
+  color: #5051db;
 }
 
 a:hover,
@@ -176,45 +187,6 @@ a:focus {
 /*------------------------------------*\
   #OBJECTS
 \*------------------------------------*/
-
-/*
-    Objects: section
-    ---
-    Creates vertical whitespace between adjacent sections inside a row
-*/
-
-.o-section {
-  margin-top: 24px;
-  display: flow-root;
-}
-
-.o-section + .o-section {
-  margin-top: 24px;
-}
-
-@media (min-width: 768px) {
-  .o-section--lg + .o-section--lg,
-  .o-section--xl + .o-section--xl {
-    margin-top: 48px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .o-section--xl + .o-section--xl {
-    margin-top: 72px;
-  }
-}
-
-/*
-    Objects: List
-    ---
-    Small reusable object to remove default list styling from lists
-*/
-
-.o-list {
-  list-style-type: none;
-  padding: 0;
-}
 
 /*
     Objects: Row
@@ -241,14 +213,19 @@ a:focus {
   }
 
   .o-row--md {
-    padding-left: 48px;
-    padding-right: 24px;
+    padding-top: 48px;
+    padding-bottom: 24px;
   }
 
   .o-row--lg {
     padding-top: 72px;
     padding-bottom: 48px;
   }
+}
+
+/* color modifiers */
+.o-row—neutral-x-light {
+  background-color: #f7f7f7;
 }
 
 /*
@@ -261,7 +238,7 @@ a:focus {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  max-width: 70.5em; /* 90 * 16px = 1440px */
+  max-width: 56.4em; /* 56.4 * 20px = 1128px */
 }
 
 /*
@@ -381,6 +358,44 @@ a:focus {
   align-content: space-between;
 }
 
+/*
+    Objects: List
+    ---
+    Small reusable object to remove default list styling from lists
+*/
+
+.o-list-reset {
+  list-style: none;
+  padding: 0;
+}
+
+/*
+    Objects: section
+    ---
+    Creates vertical whitespace between adjacent sections inside a row
+*/
+
+.o-section {
+  display: flow-root;
+}
+
+.o-section + .o-section {
+  margin-top: 24px;
+}
+
+@media (min-width: 768px) {
+  .o-section--lg + .o-section--lg,
+  .o-section--xl + .o-section--xl {
+    margin-top: 48px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .o-section--xl + .o-section--xl {
+    margin-top: 72px;
+  }
+}
+
 /*------------------------------------*\
   #COMPONENTS
 \*------------------------------------*/
@@ -398,10 +413,7 @@ a:focus {
 @media (min-width: 992px) {
   .c-header {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
     justify-content: space-between;
-    align-items: baseline;
   }
 
   .c-header__nav {
@@ -409,41 +421,6 @@ a:focus {
   }
 }
 
-/*
-    Component: Nav
-    ---
-    Main navigation of the site
-*/
-
-.c-nav {
-  font-size: 18px;
-  line-height: 24px;
-}
-
-.c-nav__link {
-  text-decoration: none;
-  font-weight: 400;
-  padding: 8px 0;
-  display: block;
-}
-
-.c-nav__link,
-.c-nav__link:visited,
-.c-nav__link:active {
-  color: #202024;
-}
-
-.is-selected .c-nav__link,
-.c-nav__link:hover,
-.c-nav__link:focus {
-  color: #5051db;
-}
-
-.c-nav__link--meta,
-.c-nav__link--meta:visited,
-.c-nav__link--meta:active {
-  color: #6c6c75;
-}
 /*
     Component: Logo
     ---
@@ -458,6 +435,58 @@ a:focus {
   height: 100%;
 }
 
+@media (min-width: 768px) {
+  .c-logo {
+    height: 40px;
+  }
+}
+
+/*
+    Component: Nav
+    ---
+    Main navigation of the site
+*/
+
+.c-nav {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.c-nav--meta {
+  font-size: 16px;
+}
+
+.c-nav__link {
+  text-decoration: none;
+  padding: 8px 0;
+  display: block;
+}
+
+.c-nav__link,
+.c-nav__link:visited,
+.c-nav__link:active {
+  color: #202024;
+}
+
+.c-nav__link--meta,
+.c-nav__link--meta:visited,
+.c-nav__link--meta:active {
+  color: #6c6c75;
+}
+
+.is-selected .c-nav__link,
+.c-nav__link:hover,
+.c-nav__link:focus {
+  color: #5051db;
+}
+
+@media (min-width: 768px) {
+  .c-nav__list {
+    display: flex;
+    gap: 32px;
+  }
+}
+
 /*------------------------------------*\
   #UTILITIES
 \*------------------------------------*/
@@ -470,6 +499,26 @@ a:focus {
 
 .u-pt-clear {
   padding-top: 0 !important;
+}
+
+.u-pt-xs {
+  padding-top: 8px !important;
+}
+
+.u-pt-sm {
+  padding-top: 16px !important;
+}
+
+.u-mb-clear {
+  margin-bottom: 0 !important;
+}
+
+.u-mb-xs {
+  margin-bottom: 8px !important;
+}
+
+.u-mb-sm {
+  margin-bottom: 16px !important;
 }
 
 /*
@@ -728,21 +777,6 @@ a:focus {
 /* Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {}
 */
-
-@media (min-width: 768px) {
-  html {
-    font-size: 20px;
-    line-height: 1.6;
-  }
-  .c-logo {
-    height: 40px;
-  }
-
-  .c-nav__list {
-    display: flex;
-    gap: 32px;
-  }
-}
 
 /* Large devices (landscape tablets, desktops, 992px and up)
 @media (min-width: 992px) {}
